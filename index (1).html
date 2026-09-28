@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="FlyRank Machine Learning Capstone — transparent search-performance signals to human-reviewed content actions.">
+  <title>FlyRank ML Capstone | Search Signals to Content Actions</title>
+  <style>
+    :root{
+      --bg:#07111f; --panel:#0d1b2d; --panel2:#10243a; --text:#eaf2ff;
+      --muted:#9db0c8; --line:#213750; --accent:#6ee7b7; --accent2:#60a5fa;
+      --warning:#fbbf24; --max:1120px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:linear-gradient(180deg,#07111f 0%,#091827 45%,#07111f 100%);
+      color:var(--text);font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.7}
+    a{color:var(--accent2);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:var(--max);margin:auto;padding:0 24px}
+    nav{position:sticky;top:0;z-index:20;background:rgba(7,17,31,.88);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+    nav .inner{max-width:var(--max);margin:auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .brand{font-weight:800;letter-spacing:.2px}
+    .brand span{color:var(--accent)}
+    .links{display:flex;flex-wrap:wrap;gap:16px;font-size:.9rem}
+    .hero{padding:92px 0 70px;border-bottom:1px solid var(--line)}
+    .eyebrow{display:inline-block;border:1px solid #28506f;background:#0b2035;color:var(--accent);
+      border-radius:999px;padding:6px 12px;font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+    h1{font-size:clamp(2.5rem,6vw,5rem);line-height:1.03;max-width:950px;margin:22px 0 20px;letter-spacing:-.045em}
+    .hero p{font-size:1.16rem;color:var(--muted);max-width:800px}
+    .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+    .btn{display:inline-block;padding:11px 17px;border-radius:10px;border:1px solid var(--line);background:var(--panel);font-weight:700}
+    .btn.primary{background:var(--accent);color:#062016;border-color:var(--accent)}
+    section{padding:62px 0;border-bottom:1px solid var(--line)}
+    h2{font-size:2rem;margin:0 0 18px;letter-spacing:-.02em}
+    h3{font-size:1.18rem;margin-top:28px;color:#dbeafe}
+    p{color:#c2cede}
+    .lead{font-size:1.08rem;max-width:900px}
+    .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+    .grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+    .card{background:linear-gradient(145deg,var(--panel),#0a1727);border:1px solid var(--line);border-radius:16px;padding:22px}
+    .card strong{display:block;margin-bottom:7px;color:#fff}
+    .metric{font-size:1.7rem;font-weight:800;color:var(--accent)}
+    ul,ol{color:#c2cede;padding-left:24px}
+    li{margin:8px 0}
+    table{width:100%;border-collapse:collapse;margin:20px 0;background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+    th,td{text-align:left;padding:13px 15px;border-bottom:1px solid var(--line);vertical-align:top}
+    th{color:#fff;background:#11253c}
+    td{color:#c2cede}
+    tr:last-child td{border-bottom:0}
+    .callout{border-left:4px solid var(--accent);background:#0b2030;padding:18px 20px;border-radius:0 12px 12px 0;margin:22px 0}
+    .warning{border-left-color:var(--warning);background:#241d0a}
+    code{background:#081321;border:1px solid var(--line);padding:2px 6px;border-radius:6px;color:#c7d8ed}
+    .timeline{display:grid;gap:12px}
+    .step{display:grid;grid-template-columns:70px 1fr;gap:18px;align-items:start}
+    .num{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:#12304b;border:1px solid #2c5777;color:var(--accent);font-weight:800}
+    footer{padding:45px 0 60px;color:var(--muted)}
+    .small{font-size:.9rem;color:var(--muted)}
+    @media(max-width:800px){.grid,.grid3{grid-template-columns:1fr}.links{display:none}.hero{padding-top:65px}.step{grid-template-columns:48px 1fr}}
+  </style>
+</head>
+<body>
+<nav>
+  <div class="inner">
+    <div class="brand">FlyRank <span>ML Capstone</span></div>
+    <div class="links">
+      <a href="#abstract">Abstract</a><a href="#data">Data</a><a href="#method">Methodology</a>
+      <a href="#results">Results</a><a href="#limits">Limitations</a><a href="#recommendations">Recommendations</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Machine Learning · Research Artifact</span>
+    <h1>From Search Signals to Human-Reviewed Content Actions</h1>
+    <p>
+      A transparent workflow that moves from search-performance signals to a ranked,
+      human-reviewed content action queue — with baseline comparison, validation,
+      leakage checks, and honest claim framing.
+    </p>
+    <div class="actions">
+      <a class="btn primary" href="#abstract">Read the paper</a>
+      <a class="btn" href="https://github.com/MuhammaadArsalanZahid/flyrank-ml-capstone" target="_blank" rel="noopener">View GitHub Repository</a>
+    </div>
+  </div>
+</header>
+
+<main>
+<section id="abstract">
+  <div class="wrap">
+    <h2>Abstract</h2>
+    <p class="lead">
+      This project investigates whether current search-performance signals can support transparent
+      prioritization of content pages for human review. The workflow starts with a rule-based baseline
+      using CTR, average position, and impressions, followed by a machine-learning model evaluated on
+      the same task and evaluation design. Validation is strengthened through an honest grouped or
+      time-aware design and a leakage audit so that future information is not used to create an
+      unrealistically strong result. The final output is a ranked action queue with reason codes and
+      human-review guidance rather than an autonomous content-editing system. Results are interpreted
+      as directional decision-support evidence and not as a causal guarantee that changing a page
+      will improve SEO performance.
+    </p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>1. Introduction / Problem Statement</h2>
+    <p>
+      Search-performance datasets contain many signals that can help identify pages worth reviewing,
+      but a useful ML artifact must do more than produce a score. It must define a transparent baseline,
+      evaluate a model honestly, avoid leakage, communicate uncertainty, and translate the output into
+      practical human-reviewed actions.
+    </p>
+    <div class="callout">
+      <strong>Research question:</strong> Can transparent search-performance signals support prioritization
+      of content pages for human review, and can a machine-learning model provide useful decision-support
+      beyond a simple baseline?
+    </div>
+  </div>
+</section>
+
+<section id="data">
+  <div class="wrap">
+    <h2>2. Data</h2>
+    <p>
+      The project uses the <code>content_refresh_anonymized.csv</code> dataset supplied for the
+      FlyRank ML Internship workflow.
+    </p>
+    <div class="grid3">
+      <div class="card"><strong>CTR</strong><span class="small">Click-through-rate signal used in the baseline/action workflow.</span></div>
+      <div class="card"><strong>Average position</strong><span class="small">Search-position signal used to identify opportunity patterns.</span></div>
+      <div class="card"><strong>Impressions</strong><span class="small">Visibility/volume signal used to prioritize opportunities.</span></div>
+    </div>
+    <div class="callout warning">
+      <strong>Public-safety boundary:</strong> this artifact must not expose client names, private URLs,
+      private queries, credentials, or other identifying information. Future outcomes and post-action
+      information must not be used as current decision inputs.
+    </div>
+  </div>
+</section>
+
+<section id="method">
+  <div class="wrap">
+    <h2>3. Methodology</h2>
+    <div class="timeline">
+      <div class="step"><div class="num">01</div><div><h3>Signal audit</h3><p>Two signals were checked before encoding the baseline rule. At least one was linked to a FlyRank flag from the session, with verdicts such as CONFIRMED, MIXED, OPPOSITE, or FALSE.</p></div></div>
+      <div class="step"><div class="num">02</div><div><h3>Transparent baseline</h3><p>The Week-4 baseline uses current CTR, average position, and impressions to produce a score, one reason code, and an action label.</p></div></div>
+      <div class="step"><div class="num">03</div><div><h3>Machine-learning model</h3><p>The Week-5 model provides a more formal comparison against the transparent baseline. Model complexity is not treated as success by itself.</p></div></div>
+      <div class="step"><div class="num">04</div><div><h3>Honest validation</h3><p>The Week-6 audit uses grouped or time-aware validation where appropriate and checks that forbidden future/label-derived inputs do not leak into features.</p></div></div>
+      <div class="step"><div class="num">05</div><div><h3>Action playbook</h3><p>The validated output becomes a ranked queue with reason codes, intended use, limits, human-review rules, and monitoring/retrain triggers.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="results">
+  <div class="wrap">
+    <h2>4. Results</h2>
+    <p>
+      The required evaluation compares the ML-08 model with the Week-4 baseline on the same split
+      and the same metric. The repository contains the executed notebooks and metrics receipts used
+      to reproduce the analysis.
+    </p>
+    <div class="grid">
+      <div class="card">
+        <strong>Baseline</strong>
+        <p>Transparent score → reason code → action label. It is intentionally simple and auditable.</p>
+      </div>
+      <div class="card">
+        <strong>Model</strong>
+        <p>Machine-learning approach evaluated against the baseline under the documented validation design.</p>
+      </div>
+    </div>
+    <div class="callout">
+      <strong>Interpretation:</strong> reported performance should be described using the actual recorded
+      metrics from the executed notebooks. No metric is invented or presented as a causal guarantee.
+    </div>
+  </div>
+</section>
+
+<section id="limits">
+  <div class="wrap">
+    <h2>5. Limitations & Honest Framing</h2>
+    <ul>
+      <li>The signals are observational.</li>
+      <li>Search intent, SERP composition, seasonality, site changes, and measurement quality can affect observed values.</li>
+      <li>A score identifies review opportunities; it does not prove that an edit will improve outcomes.</li>
+      <li>Validation quality depends on the exact split and available labels/outcomes.</li>
+      <li>An anonymized dataset does not support client-specific public conclusions.</li>
+      <li>Recommendations require human review before implementation.</li>
+    </ul>
+    <div class="callout">
+      <strong>Safe claim language:</strong> “observed,” “measured,” “directional,” and
+      “decision-support.” Avoid “guarantees,” “causes,” or “will improve rankings.”
+    </div>
+  </div>
+</section>
+
+<section id="recommendations">
+  <div class="wrap">
+    <h2>6. Ranked Recommendations</h2>
+    <p>
+      The action playbook turns validated signals into practical review priorities. The queue is
+      intended to help a human decide what to investigate first, not to publish changes automatically.
+    </p>
+    <table>
+      <thead><tr><th>Priority pattern</th><th>Suggested human review</th></tr></thead>
+      <tbody>
+        <tr><td>High-visibility CTR opportunity</td><td>Review title/snippet alignment, search intent, and page relevance.</td></tr>
+        <tr><td>Mid-position opportunity</td><td>Review content depth, intent match, internal linking, and snippet opportunity.</td></tr>
+        <tr><td>Low-confidence opportunity</td><td>Monitor and collect more evidence before making a content change.</td></tr>
+      </tbody>
+    </table>
+    <h3>No-go list</h3>
+    <ul>
+      <li>Do not automatically publish content changes based only on the score.</li>
+      <li>Do not automatically delete or redirect pages based only on the score.</li>
+      <li>Do not automatically change canonical or indexing decisions based only on the score.</li>
+      <li>Do not treat the ranking as proof of future SEO improvement.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>7. Monitoring & Retraining</h2>
+    <p>
+      Monitoring should focus on whether the input distribution and model behavior remain consistent
+      with the validation evidence. Retraining or re-auditing should be considered when meaningful
+      drift, changed data definitions, degraded measured performance, or a change in the business
+      decision context is observed.
+    </p>
+    <div class="grid3">
+      <div class="card"><strong>Input drift</strong><span class="small">Review changes in the distribution of key signals.</span></div>
+      <div class="card"><strong>Performance drift</strong><span class="small">Re-evaluate against a fresh, honest validation design.</span></div>
+      <div class="card"><strong>Decision drift</strong><span class="small">Re-check whether the action policy still matches human review needs.</span></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>8. Reproducibility</h2>
+    <p>Core artifacts are maintained in the GitHub repository:</p>
+    <table>
+      <thead><tr><th>Artifact</th><th>Purpose</th></tr></thead>
+      <tbody>
+        <tr><td><code>work/notebooks/w04_baseline_score.ipynb</code></td><td>Signal audit and transparent baseline queue.</td></tr>
+        <tr><td><code>work/notebooks/w05_model.ipynb</code></td><td>Model training and baseline comparison.</td></tr>
+        <tr><td><code>work/notebooks/w06_validation_audit.ipynb</code></td><td>Honest validation, leakage audit, and claim review.</td></tr>
+        <tr><td><code>work/notebooks/w07_action_playbook.ipynb</code></td><td>Ranked content action playbook and exports.</td></tr>
+        <tr><td><code>work/notebooks/capstone.ipynb</code></td><td>Final research-paper assembly and reproducibility checks.</td></tr>
+      </tbody>
+    </table>
+    <p><a class="btn" href="https://github.com/MuhammaadArsalanZahid/flyrank-ml-capstone" target="_blank" rel="noopener">Open Repository →</a></p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>9. Acknowledgments & Data Credit</h2>
+    <p>
+      Built on the FlyRank ML Internship dataset.
+      Data source and program credit:
+      <a href="https://flyrank.ai" target="_blank" rel="noopener">FlyRank AI</a>.
+    </p>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><strong>FlyRank ML Capstone</strong> · Machine Learning Track</p>
+    <p class="small">
+      This research artifact is educational and decision-support oriented. It does not constitute
+      a production SEO system or a guarantee of search-performance outcomes.
+    </p>
+  </div>
+</footer>
+</body>
+</html>
